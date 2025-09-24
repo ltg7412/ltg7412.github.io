@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roller</title>
+  <style>
+    h1{
+      font-family: sans-serif;
+    }
+    /* https://www.w3schools.com/csS/css3_buttons.asp */
+    button {
+      background-color: #04AA6D;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    #btn4{
+      background-color: #3366e9;
+    }
+
+    #btn6{
+      background-color: #33c2e9;
+    }
+
+    #btn8{
+      background-color: rgb(5, 173, 145);
+    }
+
+    #btn10{
+      background-color: #26c269;
+    }
+    
+    #btn12{
+      background-color: #51c612;
+    }
+
+    #btn20{
+      background-color: #d8e211;
+    }
+
+    #btn100{
+      background-color: #e96133;
+    }
+
+    #clearHistory {
+      background-color: rgb(210, 0, 0);
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dice Roller!</h1>
+  <div>
+    <button id="btn4">D4</button>
+    <button id="btn6">D6</button>
+    <button id="btn8">D8</button>
+    <button id="btn10">D10</button>
+    <button id="btn12">D12</button>
+    <button id="btn20">D20</button>
+    <button id="btn100">D100</button>
+    <button id="clearHistory">CLR</button>
+    
+  </div>
+
+  <hr>
+
+  <p>The roll is:</p>
+  <div id="numberContainer">
+  </div>
+  <script>
+    // We are putting the <script> tag at the bottom to make sure that 
+    // the HTML page has loaded before we start trying to hook up button events
+    
+    // The following code is loaded in once, when the HTML page first loads
+    
+
+    function showRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      let number = Math.floor(Math.random() * (max - min + 1)) + min;
+
+      let span = document.createElement("p");
+      span.innerHTML = number;
+      numberContainer.prepend(span);
+    }
+
+    btn4.onclick = function(){
+      showRandomInt(1, 4);
+    };
+    btn6.onclick = function(){
+      showRandomInt(1, 6);
+    };
+    btn8.onclick = function(){
+      showRandomInt(1, 8);
+    };
+    btn10.onclick = function(){
+      showRandomInt(1, 10);
+    };
+    btn12.onclick = function(){
+      showRandomInt(1, 12);
+    };
+    btn20.onclick = function(){
+      showRandomInt(1, 20);
+    };
+    btn100.onclick = function(){
+      showRandomInt(1, 100);
+    };
+    clearHistory.onclick = function(){
+      numberContainer.replaceChildren();
+    }
+
+  </script>
+</body>
+</html>
